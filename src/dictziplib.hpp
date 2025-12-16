@@ -18,10 +18,7 @@ class DictData
 public:
     static const size_t DICT_CACHE_SIZE = 5;
 
-    DictData() {
-        this->chunks = nullptr;
-        this->offsets = nullptr;
-    }
+    DictData() {}
     ~DictData() { close(); }
     bool open(const std::string &filename, int computeCRC);
     void close();
@@ -45,8 +42,8 @@ private:
     int version;
     int chunkLength;
     int chunkCount;
-    int *chunks;
-    unsigned long *offsets; /* Sum-scan of chunks. */
+    int *chunks = nullptr;
+    unsigned long *offsets = nullptr; /* Sum-scan of chunks. */
     std::string origFilename;
     std::string comment;
     unsigned long crc;
