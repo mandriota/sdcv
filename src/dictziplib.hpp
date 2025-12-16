@@ -18,7 +18,10 @@ class DictData
 public:
     static const size_t DICT_CACHE_SIZE = 5;
 
-    DictData() {}
+    DictData() {
+        this->chunks = nullptr;
+        this->offsets = nullptr;
+    }
     ~DictData() { close(); }
     bool open(const std::string &filename, int computeCRC);
     void close();
